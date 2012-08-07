@@ -1,3 +1,6 @@
+/**
+ * Copyright (c) 2012, salesforce.com, inc. All rights reserved.
+ */
 package com.force.jp.ant.apextestplus;
 
 import java.io.BufferedInputStream;
