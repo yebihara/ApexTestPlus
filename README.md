@@ -1,5 +1,6 @@
 Apex Test Plus for Force.com Migration Tool
 ===========================================
+\[[Japanese version](README_ja.md)\]
 
 Introduction
 ------------
@@ -11,7 +12,7 @@ With Apex Test Plus, the following features, that are not provided by Force.com 
 * to visualize code coverage
 * to view a specific part of debug log that is associated with each test method
 
-See [a sample test result](doc/sample_result/index.html) that Apex Test Plus actually generated.  
+Clone or download this repository and open `doc/sample_result/index.html` in a web browser. You can see a sample test result that Apex Test Plus actually generated.  
 To know Force.com Migration Tool, see the [Force.com Migration Tool Guide](http://www.salesforce.com/us/developer/docs/daas/index.htm).
 
 
@@ -28,7 +29,7 @@ Creating build.xml
 The easist way to create a proper build.xml would be to start with the sample build.xml and build.properties that come with Force.com Migration Tool.  
 At first, open build.xml and add an attribute setting, **xmlns:apextestplus="antlib:com.force.jp.ant.apextestplus"**, to the "project" root element as follows.
 
-        <project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce" xmlns:apextestplus="antlib:com.force.jp.ant.apextestplus">
+    <project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce" xmlns:apextestplus="antlib:com.force.jp.ant.apextestplus">
 
 The name of Ant task to run tests is **runTest**.
 
@@ -38,50 +39,50 @@ Some sample definitions, that will match typical cases, are shown below.
 Using the following task definitions, Apex source code (classes and triggers) are always retrieved from the server just before tests are ran.  
 This is the most secure way to correctly generate visual code coverage results because source code may be changed by anyone else on the server.
 
-        <property name="outDir" value="test_result"/>
-        <property name="srcDir" value="${outDir}/src"/>
-    
-        <target name="runTest" depends="cleanOutDir,bulkRetrieveClasses,bulkRetrieveTriggers">
-          <apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" >
-            <class>TestClass1</class>
-            <class>TestClass2</class>
-            <class>TestClass3</class>
-          </apextestplus:runTest>
-        </target>
-    
-        <target name="cleanOutDir">
-          <delete dir="${outDir}" />
-        </target>
-    
-        <target name="bulkRetrieveClasses">
-          <mkdir dir="${srcDir}"/>
-          <sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexClass" retrieveTarget="${srcDir}"/>
-        </target>
-    
-        <target name="bulkRetrieveTriggers">
-          <mkdir dir="${srcDir}"/>
-          <sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexTrigger" retrieveTarget="${srcDir}"/>
-        </target>
+    <property name="outDir" value="test_result"/>
+    <property name="srcDir" value="${outDir}/src"/>
+
+    <target name="runTest" depends="cleanOutDir,bulkRetrieveClasses,bulkRetrieveTriggers">
+      <apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" >
+        <class>TestClass1</class>
+        <class>TestClass2</class>
+        <class>TestClass3</class>
+      </apextestplus:runTest>
+    </target>
+
+    <target name="cleanOutDir">
+      <delete dir="${outDir}" />
+    </target>
+
+    <target name="bulkRetrieveClasses">
+      <mkdir dir="${srcDir}"/>
+      <sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexClass" retrieveTarget="${srcDir}"/>
+    </target>
+
+    <target name="bulkRetrieveTriggers">
+      <mkdir dir="${srcDir}"/>
+      <sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexTrigger" retrieveTarget="${srcDir}"/>
+    </target>
 
 ### Using Local Source Files
 Retrieving source code from the server is a little bit time-consuming task although it's reliable.  
 If you have a dedicated salesforce.com environment (e.g. Developer Edition), it would be safe enough to use the source code that resides on your local PC to generate visual code coverage results.  
 Note that this example assumes build.xml is located in the same diretory where your `src/` diretory of Force.com project exists.
 
-        <property name="outDir" value="test_result"/>
-        <property name="srcDir" value="src"/>
-    
-        <target name="runTestLocal" depends="cleanOutDir">
-          <apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" >
-            <class>TestClass1</class>
-            <class>TestClass2</class>
-            <class>TestClass3</class>
-          </apextestplus:runTest>
-        </target>
-    
-        <target name="cleanOutDir">
-          <delete dir="${outDir}" />
-        </target>
+    <property name="outDir" value="test_result"/>
+    <property name="srcDir" value="src"/>
+
+    <target name="runTestLocal" depends="cleanOutDir">
+      <apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" >
+        <class>TestClass1</class>
+        <class>TestClass2</class>
+        <class>TestClass3</class>
+      </apextestplus:runTest>
+    </target>
+
+    <target name="cleanOutDir">
+      <delete dir="${outDir}" />
+    </target>
 
 
 Running Test
