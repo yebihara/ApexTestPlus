@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>HandleProductPriceChange</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>HandleProductPriceChange: 0.00% (0/5)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">trigger HandleProductPriceChange on Merchandise__c (after update) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="srcLine">    // update invoice line items associated with open invoices</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="lineNoCov">    List&lt;Line_Item__c&gt; openLineItems = [</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="srcLine">        SELECT j.Unit_Price__c, j.Merchandise__r.Price__c</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">        FROM Line_Item__c j</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">        WHERE j.Invoice_Statement__r.Status__c = 'Negotiating'</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine">          AND j.Merchandise__r.id IN :Trigger.new</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">8</td>
+    <td class="srcCell"><span class="srcLine">        FOR UPDATE</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">9</td>
+    <td class="srcCell"><span class="srcLine">    ];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">10</td>
+    <td class="srcCell"><span class="srcLine">    </span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">11</td>
+    <td class="srcCell"><span class="lineNoCov">    for (Line_Item__c li: openLineItems) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">12</td>
+    <td class="srcCell"><span class="lineNoCov">    	if (li.Merchandise__r.Price__c &lt; li.Unit_Price__c) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">13</td>
+    <td class="srcCell"><span class="lineNoCov">    		li.Unit_Price__c = li.Merchandise__r.Price__c;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">14</td>
+    <td class="srcCell"><span class="srcLine">    	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">15</td>
+    <td class="srcCell"><span class="srcLine">    }</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">16</td>
+    <td class="srcCell"><span class="srcLine">    </span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">17</td>
+    <td class="srcCell"><span class="lineNoCov">    update openLineItems;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">18</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

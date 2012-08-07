@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>CellGroup</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>CellGroup: 100.00% (16/16)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">public class CellGroup {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="srcLine">	public static CellGroup[] createList() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="srcLine">		CellGroup[] cellGroupList = new CellGroup[0];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">		for (Integer i = 0; i &lt; 9; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">			cellGroupList.add(new CellGroup());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">8</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">9</td>
+    <td class="srcCell"><span class="srcLine">		return cellGroupList;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">10</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">11</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">12</td>
+    <td class="srcCell"><span class="srcLine">	public List&lt;Cell&gt; cellList = new Cell[0];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">13</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">14</td>
+    <td class="srcCell"><span class="srcLine">	public Integer pendingValueBits {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">15</td>
+    <td class="srcCell"><span class="srcLine">		get {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">16</td>
+    <td class="srcCell"><span class="srcLine">			return 511 ^ ((((((((cellList[0].bitValue | cellList[1].bitValue) | cellList[2].bitValue) | cellList[3].bitValue) | cellList[4].bitValue) | cellList[5].bitValue) | cellList[6].bitValue) | cellList[7].bitValue) | cellList[8].bitValue);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">17</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">18</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">19</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">20</td>
+    <td class="srcCell"><span class="srcLine">	public void add(Cell cell) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">21</td>
+    <td class="srcCell"><span class="srcLine">		cellList.add(cell);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">22</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">23</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">24</td>
+    <td class="srcCell"><span class="srcLine">	public Boolean canAccept(Integer value, Cell except) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">25</td>
+    <td class="srcCell"><span class="srcLine">		for (Cell cell : cellList) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">26</td>
+    <td class="srcCell"><span class="srcLine">			if (cell != except &amp;&amp; cell.value == null &amp;&amp; cell.getCandidates().contains(value)) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">27</td>
+    <td class="srcCell"><span class="srcLine">				return true;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">28</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">29</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">30</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">31</td>
+    <td class="srcCell"><span class="srcLine">		return false;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">32</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">33</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

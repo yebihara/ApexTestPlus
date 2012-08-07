@@ -1,0 +1,355 @@
+<html>
+<head>
+<title>Cell</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>Cell: 84.78% (39/46)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">public class Cell {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="srcLine">	public static final Integer[] BIT_PATTERNS = new Integer[] {1, 2, 4, 8, 16, 32, 64, 128, 256};</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="srcLine">	public Integer rowNo {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">	public Integer colNo {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">	public Integer regionNo {get; private set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">8</td>
+    <td class="srcCell"><span class="srcLine">	public CellGroup row {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">9</td>
+    <td class="srcCell"><span class="srcLine">	public CellGroup col {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">10</td>
+    <td class="srcCell"><span class="srcLine">	public CellGroup region {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">11</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">12</td>
+    <td class="srcCell"><span class="srcLine">	public Integer value {get; set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">13</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">14</td>
+    <td class="srcCell"><span class="srcLine">	public Integer bitValue {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">15</td>
+    <td class="srcCell"><span class="srcLine">		get {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">16</td>
+    <td class="srcCell"><span class="srcLine">			return value != null ? BIT_PATTERNS[value - 1] : 0;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">17</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">18</td>
+    <td class="srcCell"><span class="srcLine">		private set;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">19</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">20</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">21</td>
+    <td class="srcCell"><span class="srcLine">	public Cell(Integer rowNo, Integer colNo, CellGroup[] rows, CellGroup[] cols, CellGroup[] regions) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">22</td>
+    <td class="srcCell"><span class="srcLine">		if (rowNo &lt; 1 || rowNo &gt; 9 || colNo &lt; 1 || colNo &gt; 9) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">23</td>
+    <td class="srcCell"><span class="lineNoCov">			throw new SudokuException('row and col number must be between 1 and 9.');</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">24</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">25</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">26</td>
+    <td class="srcCell"><span class="srcLine">		this.rowNo = rowNo;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">27</td>
+    <td class="srcCell"><span class="srcLine">		if (rows != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">28</td>
+    <td class="srcCell"><span class="srcLine">			this.row = rows[rowNo - 1];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">29</td>
+    <td class="srcCell"><span class="srcLine">			row.add(this);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">30</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">31</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">32</td>
+    <td class="srcCell"><span class="srcLine">		this.colNo = colNo;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">33</td>
+    <td class="srcCell"><span class="srcLine">		if (cols != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">34</td>
+    <td class="srcCell"><span class="srcLine">			this.col = cols[colNo - 1];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">35</td>
+    <td class="srcCell"><span class="srcLine">			col.add(this);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">36</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">37</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">38</td>
+    <td class="srcCell"><span class="srcLine">		this.regionNo = (rowNo - 1) / 3 * 3 + (colNo - 1) / 3 + 1;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">39</td>
+    <td class="srcCell"><span class="srcLine">		if (regions != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">40</td>
+    <td class="srcCell"><span class="srcLine">			this.region = regions[regionNo - 1];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">41</td>
+    <td class="srcCell"><span class="srcLine">			region.add(this);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">42</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">43</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">44</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">45</td>
+    <td class="srcCell"><span class="srcLine">	public Cell(Integer cellNo, CellGroup[] rows, CellGroup[] cols, CellGroup[] regions) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">46</td>
+    <td class="srcCell"><span class="srcLine">		this((cellNo - 1) / 9 + 1, Math.mod((cellNo - 1), 9) + 1, rows, cols, regions);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">47</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">48</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">49</td>
+    <td class="srcCell"><span class="srcLine">	public Cell(Integer rowNo, Integer colNo) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">50</td>
+    <td class="srcCell"><span class="srcLine">		this(rowNo, colNo, null, null, null);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">51</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">52</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">53</td>
+    <td class="srcCell"><span class="lineNoCov">	public Cell(Integer cellNo) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">54</td>
+    <td class="srcCell"><span class="lineNoCov">		this(cellNo, null, null, null);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">55</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">56</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">57</td>
+    <td class="srcCell"><span class="srcLine">	public Candidates getCandidates() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">58</td>
+    <td class="srcCell"><span class="srcLine">		return new Candidates(this);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">59</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">60</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">61</td>
+    <td class="srcCell"><span class="srcLine">	public Integer solve() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">62</td>
+    <td class="srcCell"><span class="srcLine">		Candidates candidates = getCandidates();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">63</td>
+    <td class="srcCell"><span class="srcLine">		Integer numCandidates = candidates.size;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">64</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">65</td>
+    <td class="srcCell"><span class="srcLine">		if (numCandidates == 1) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">66</td>
+    <td class="srcCell"><span class="srcLine">			// &#12371;&#12398;&#12475;&#12523;&#12399;1&#12388;&#12398;&#25968;&#23383;&#12375;&#12363;&#21463;&#12369;&#20837;&#12428;&#12425;&#12428;&#12394;&#12356;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">67</td>
+    <td class="srcCell"><span class="srcLine">			// the first and only value in the List is the answer</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">68</td>
+    <td class="srcCell"><span class="lineNoCov">			value = candidates.get(0);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">69</td>
+    <td class="srcCell"><span class="lineNoCov">			return value;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">70</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">71</td>
+    <td class="srcCell"><span class="srcLine">		} else if (numCandidates &gt; 1) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">72</td>
+    <td class="srcCell"><span class="srcLine">			for (Integer candidate : candidates.toList()) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">73</td>
+    <td class="srcCell"><span class="srcLine">				if (!row.canAccept(candidate, this) || !col.canAccept(candidate, this) || !region.canAccept(candidate, this)) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">74</td>
+    <td class="srcCell"><span class="srcLine">					// &#12371;&#12398;&#25968;&#23383;&#12399;&#12371;&#12398;&#12475;&#12523;&#12375;&#12363;&#21463;&#12369;&#20837;&#12428;&#12425;&#12428;&#12394;&#12356;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">75</td>
+    <td class="srcCell"><span class="srcLine">					value = candidate;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">76</td>
+    <td class="srcCell"><span class="srcLine">					return candidate;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">77</td>
+    <td class="srcCell"><span class="srcLine">				}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">78</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">79</td>
+    <td class="srcCell"><span class="srcLine">		} else {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">80</td>
+    <td class="srcCell"><span class="lineNoCov">			throw new SudokuException('no answer');</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">81</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">82</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">83</td>
+    <td class="srcCell"><span class="lineNoCov">		return null;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">84</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">85</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

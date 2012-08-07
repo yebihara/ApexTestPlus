@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>SudokuTrigger</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>SudokuTrigger: 0.00% (0/3)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">trigger SudokuTrigger on Sudoku__c (before insert, before update) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="lineNoCov">	for (Sudoku__c problem : Trigger.new) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="lineNoCov">		if (problem.DoSolve__c) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="lineNoCov">			ID batchJobId = Database.executeBatch(new SudokuBatch(problem));</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

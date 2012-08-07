@@ -1,0 +1,124 @@
+span.srcLine
+{
+    display: inline;
+    white-space: pre;
+    padding-left: 10px;
+    font-family: Courier New, Monospace;
+}
+
+/* Source code view: format for lines which were executed */
+span.lineCov
+{
+    display: inline;
+    white-space: pre;
+    padding-left: 10px;
+    background-color: #acc1fe;
+    font-family: Courier New, Monospace;
+}
+
+
+
+/* Source code view: format for lines which were not executed */
+span.lineNoCov
+{
+    display: inline;
+    white-space: pre;
+    padding-left: 10px;
+    background-color: #fd4949;
+    font-family: Courier New, Monospace;
+}
+
+
+td.graphHeader 
+{
+    background: #eff7ff;  
+    border-bottom: #dcdcdc 1px solid;
+    border-top: #dcdcdc 1px solid;
+    border-right: #dcdcdc 1px solid;
+    border-left: #dcdcdc 1px solid;
+}
+
+td.lineCount {
+  background: #ffffff; 
+  border-right:#dcdcdc 1px solid;
+  border-left: #dcdcdc 1px solid;    
+  padding-right: 3px;
+}
+
+td.srcCell
+{
+    background: #ffffff;
+    padding-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+table {
+    border: 1px #808080
+    solid;
+  background-color:#ffffff;
+}
+
+.detailList {
+  width:95%;
+  color:#000000;
+  margin-left:12px;
+}
+
+td.labelCol {
+  background-color:#F3F3EC;
+  color:#4A4A56;
+  font-weight:bold;
+  padding-bottom:2px;
+  padding-left:2px;
+  padding-right:10px;
+  padding-top:2px;
+  text-align:right;
+  width:18%;
+  border-top:#dcdcdc 1px solid;
+  border-bottom: #dcdcdc 1px solid;    
+}
+
+td.data2Col {
+  padding-bottom:2px;
+  padding-left:10px;
+  padding-right:2px;
+  padding-top:2px;
+  text-align:left;
+  width:82%;
+  border-top:#dcdcdc 1px solid;
+  border-bottom: #dcdcdc 1px solid;    
+}
+
+.headerRow {
+  background-color:#F3F3EC;
+  border-bottom-color:#CCCCCC;
+  border-bottom-style:solid;
+  border-bottom-width:2px;
+  border-right:#dcdcdc 1px solid;
+  border-left: #dcdcdc 1px solid;    
+  white-space:nowrap;
+  color:#4A4A56;
+  font-weight:bold;
+  text-align:left;
+  padding-bottom:4px;
+  padding-left:5px;
+  padding-right:2px;
+  padding-top:5px;
+}
+
+.dataCell {
+  border:#dcdcdc 1px solid;
+  padding-bottom:4px;
+  padding-left:5px;
+  padding-right:2px;
+  padding-top:4px;
+}
+
+.success {
+  background-color:#00ff00;
+}
+
+.failure {
+  background-color:#ff0000;
+}

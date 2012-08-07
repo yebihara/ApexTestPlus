@@ -1,0 +1,223 @@
+<html>
+<head>
+<title>Candidates</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>Candidates: 64.28% (18/28)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">public class Candidates {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="srcLine">	public Integer bitPattern {get; private set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="srcLine">	private Integer[] listValue {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">		get {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">			if (listValue == null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine">				Integer[] values = new Integer[0];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">8</td>
+    <td class="srcCell"><span class="srcLine">				</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">9</td>
+    <td class="srcCell"><span class="srcLine">				for (Integer i = 1; i &lt;= 9; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">10</td>
+    <td class="srcCell"><span class="srcLine">					if (contains(i)) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">11</td>
+    <td class="srcCell"><span class="srcLine">						values.add(i);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">12</td>
+    <td class="srcCell"><span class="srcLine">					}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">13</td>
+    <td class="srcCell"><span class="srcLine">				}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">14</td>
+    <td class="srcCell"><span class="srcLine">				</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">15</td>
+    <td class="srcCell"><span class="srcLine">				listValue = values;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">16</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">17</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">18</td>
+    <td class="srcCell"><span class="srcLine">			return listValue;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">19</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">20</td>
+    <td class="srcCell"><span class="srcLine">		set;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">21</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">22</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">23</td>
+    <td class="srcCell"><span class="srcLine">	public Integer size {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">24</td>
+    <td class="srcCell"><span class="srcLine">		get {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">25</td>
+    <td class="srcCell"><span class="srcLine">			return ((bitPattern &amp; Cell.BIT_PATTERNS[0]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">26</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[1]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">27</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[2]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">28</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[3]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">29</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[4]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">30</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[5]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">31</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[6]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">32</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[7]) &gt; 0 ? 1 : 0)</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">33</td>
+    <td class="srcCell"><span class="lineNoCov">				+ ((bitPattern &amp; Cell.BIT_PATTERNS[8]) &gt; 0 ? 1 : 0);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">34</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">35</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">36</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">37</td>
+    <td class="srcCell"><span class="srcLine">	public Candidates(Cell cell) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">38</td>
+    <td class="srcCell"><span class="srcLine">		bitPattern = (cell.row.pendingValueBits &amp; cell.col.pendingValueBits) &amp; cell.region.pendingValueBits;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">39</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">40</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">41</td>
+    <td class="srcCell"><span class="srcLine">	public Integer[] toList() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">42</td>
+    <td class="srcCell"><span class="srcLine">		return listValue;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">43</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">44</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">45</td>
+    <td class="srcCell"><span class="lineNoCov">	public Integer get(Integer idx) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">46</td>
+    <td class="srcCell"><span class="lineNoCov">		return listValue.get(idx);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">47</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">48</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">49</td>
+    <td class="srcCell"><span class="srcLine">	public Boolean contains(Integer value) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">50</td>
+    <td class="srcCell"><span class="srcLine">		return (bitPattern &amp; Cell.BIT_PATTERNS[value - 1]) == Cell.BIT_PATTERNS[value - 1];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">51</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">52</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

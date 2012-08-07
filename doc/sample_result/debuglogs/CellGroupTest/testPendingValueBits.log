@@ -1,0 +1,112 @@
+10:36:06.214|EXECUTION_STARTED
+10:36:06.214|CODE_UNIT_STARTED|[EXTERNAL]|01pA0000001nvgM|CellGroupTest.testPendingValueBits
+10:36:06.215|METHOD_ENTRY|[2]|01pA0000001nvgM|CellGroupTest.CellGroupTest()
+10:36:06.215|METHOD_EXIT|[2]|CellGroupTest
+10:36:06.215|METHOD_ENTRY|[1]|01pA0000001nvWP|CellGroup.CellGroup()
+10:36:06.215|METHOD_EXIT|[1]|CellGroup
+10:36:06.215|CONSTRUCTOR_ENTRY|[9]|01pA0000001nvWP|<init>()
+10:36:06.215|CONSTRUCTOR_EXIT|[9]|<init>()
+10:36:06.215|METHOD_ENTRY|[1]|01pA0000001nvWK|Cell.Cell()
+10:36:06.215|METHOD_EXIT|[1]|Cell
+10:36:06.215|CONSTRUCTOR_ENTRY|[11]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.216|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.216|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.217|CONSTRUCTOR_EXIT|[11]|<init>(Integer,Integer)
+10:36:06.217|METHOD_ENTRY|[12]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.217|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.217|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.217|METHOD_EXIT|[12]|CellGroup.add(Cell)
+10:36:06.217|METHOD_ENTRY|[13]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.217|CONSTRUCTOR_ENTRY|[13]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.217|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.218|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.219|CONSTRUCTOR_EXIT|[13]|<init>(Integer,Integer)
+10:36:06.219|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.219|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.219|METHOD_EXIT|[13]|CellGroup.add(Cell)
+10:36:06.219|METHOD_ENTRY|[14]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.219|CONSTRUCTOR_ENTRY|[14]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.219|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.220|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.220|CONSTRUCTOR_EXIT|[14]|<init>(Integer,Integer)
+10:36:06.221|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.221|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.221|METHOD_EXIT|[14]|CellGroup.add(Cell)
+10:36:06.221|METHOD_ENTRY|[15]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.221|CONSTRUCTOR_ENTRY|[15]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.221|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.222|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.222|CONSTRUCTOR_EXIT|[15]|<init>(Integer,Integer)
+10:36:06.223|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.223|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.223|METHOD_EXIT|[15]|CellGroup.add(Cell)
+10:36:06.223|METHOD_ENTRY|[16]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.223|CONSTRUCTOR_ENTRY|[16]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.223|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.224|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.224|CONSTRUCTOR_EXIT|[16]|<init>(Integer,Integer)
+10:36:06.225|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.225|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.225|METHOD_EXIT|[16]|CellGroup.add(Cell)
+10:36:06.225|METHOD_ENTRY|[17]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.225|CONSTRUCTOR_ENTRY|[17]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.225|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.226|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.227|CONSTRUCTOR_EXIT|[17]|<init>(Integer,Integer)
+10:36:06.227|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.227|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.227|METHOD_EXIT|[17]|CellGroup.add(Cell)
+10:36:06.227|METHOD_ENTRY|[18]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.227|CONSTRUCTOR_ENTRY|[18]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.227|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.229|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.229|CONSTRUCTOR_EXIT|[18]|<init>(Integer,Integer)
+10:36:06.229|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.229|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.229|METHOD_EXIT|[18]|CellGroup.add(Cell)
+10:36:06.229|METHOD_ENTRY|[19]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.229|CONSTRUCTOR_ENTRY|[19]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.229|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.230|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.230|CONSTRUCTOR_EXIT|[19]|<init>(Integer,Integer)
+10:36:06.230|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.230|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.230|METHOD_EXIT|[19]|CellGroup.add(Cell)
+10:36:06.231|METHOD_ENTRY|[20]|01pA0000001nvWP|CellGroup.add(Cell)
+10:36:06.231|CONSTRUCTOR_ENTRY|[20]|01pA0000001nvWK|<init>(Integer,Integer)
+10:36:06.231|METHOD_ENTRY|[50]|01pA0000001nvWK|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.232|METHOD_EXIT|[50]|Cell.<Constructor>(Integer, Integer, LIST<CellGroup>, LIST<CellGroup>, LIST<CellGroup>)
+10:36:06.232|CONSTRUCTOR_EXIT|[20]|<init>(Integer,Integer)
+10:36:06.232|METHOD_ENTRY|[21]|LIST.add(ANY)
+10:36:06.232|METHOD_EXIT|[21]|LIST.add(ANY)
+10:36:06.232|METHOD_EXIT|[20]|CellGroup.add(Cell)
+10:36:06.232|METHOD_ENTRY|[22]|System.assertEquals(ANY, ANY)
+10:36:06.234|METHOD_EXIT|[22]|System.assertEquals(ANY, ANY)
+10:36:06.234|METHOD_ENTRY|[25]|System.assertEquals(ANY, ANY)
+10:36:06.236|METHOD_EXIT|[25]|System.assertEquals(ANY, ANY)
+10:36:06.236|METHOD_ENTRY|[28]|System.assertEquals(ANY, ANY)
+10:36:06.237|METHOD_EXIT|[28]|System.assertEquals(ANY, ANY)
+10:36:06.237|METHOD_ENTRY|[31]|System.assertEquals(ANY, ANY)
+10:36:06.239|METHOD_EXIT|[31]|System.assertEquals(ANY, ANY)
+10:36:06.261|CUMULATIVE_LIMIT_USAGE
+10:36:06.261|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Number of script statements: 214 out of 200000
+  Maximum heap size: 0 out of 3000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+10:36:06.261|CUMULATIVE_LIMIT_USAGE_END
+
+10:36:06.239|CODE_UNIT_FINISHED|CellGroupTest.testPendingValueBits
+10:36:06.239|EXECUTION_FINISHED
+

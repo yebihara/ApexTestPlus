@@ -1,0 +1,627 @@
+<html>
+<head>
+<title>Sudoku</title>
+<link href="../coverage.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>Sudoku: 31.64% (25/79)</h1>
+<table border="0" cellpadding="0" cellspacing="0" colspan="5">
+<tr>
+    <td class="graphHeader"><b>&nbsp;line</b></td>
+    <td class="graphHeader"><b>&nbsp;source</b></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">1</td>
+    <td class="srcCell"><span class="srcLine">public class Sudoku {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">2</td>
+    <td class="srcCell"><span class="srcLine">	public static final Integer SCRIPT_STATEMENTS_LIMIT = 180000;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">3</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">4</td>
+    <td class="srcCell"><span class="srcLine">	public Cell[] cellList {get; private set;}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">5</td>
+    <td class="srcCell"><span class="srcLine">	private Set&lt;Integer&gt; pendingCellNoSet = new Set&lt;Integer&gt;();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">6</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">7</td>
+    <td class="srcCell"><span class="srcLine">	CellGroup[] rows = CellGroup.createList();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">8</td>
+    <td class="srcCell"><span class="srcLine">	CellGroup[] cols = CellGroup.createList();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">9</td>
+    <td class="srcCell"><span class="srcLine">	CellGroup[] regions = CellGroup.createList();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">10</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">11</td>
+    <td class="srcCell"><span class="srcLine">	public Sudoku() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">12</td>
+    <td class="srcCell"><span class="srcLine">		cellList = new Cell[81];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">13</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">14</td>
+    <td class="srcCell"><span class="srcLine">		for (Integer i = 0; i &lt; 81; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">15</td>
+    <td class="srcCell"><span class="srcLine">			Cell cell = new Cell(i + 1, rows, cols, regions);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">16</td>
+    <td class="srcCell"><span class="srcLine">			cellList[i] = cell;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">17</td>
+    <td class="srcCell"><span class="srcLine">			pendingCellNoSet.add(i);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">18</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">19</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">20</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">21</td>
+    <td class="srcCell"><span class="srcLine">	public Sudoku(String problem) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">22</td>
+    <td class="srcCell"><span class="srcLine">		this();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">23</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">24</td>
+    <td class="srcCell"><span class="srcLine">		String[] rows = problem.split('\r?\n');</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">25</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">26</td>
+    <td class="srcCell"><span class="srcLine">		// problem validation</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">27</td>
+    <td class="srcCell"><span class="srcLine">		if (rows.size() != 9) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">28</td>
+    <td class="srcCell"><span class="lineNoCov">			throw new SudokuException('the number of rows must be nine: actual=' + rows.size());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">29</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">30</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">31</td>
+    <td class="srcCell"><span class="srcLine">		// initialize problem</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">32</td>
+    <td class="srcCell"><span class="srcLine">		for (Integer i = 0; i &lt; 9; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">33</td>
+    <td class="srcCell"><span class="srcLine">			String row = rows[i];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">34</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">35</td>
+    <td class="srcCell"><span class="srcLine">			if (!Pattern.matches('^[1-9_]{9}$', row)) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">36</td>
+    <td class="srcCell"><span class="lineNoCov">				throw new SudokuException('each row must have exactly 9 characters: row#=' + i);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">37</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">38</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">39</td>
+    <td class="srcCell"><span class="srcLine">			for (Integer j = 0; j &lt; 9; j ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">40</td>
+    <td class="srcCell"><span class="srcLine">				String value = row.substring(j, j + 1);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">41</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">42</td>
+    <td class="srcCell"><span class="srcLine">				if (value != '_') {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">43</td>
+    <td class="srcCell"><span class="srcLine">					Integer cellNo = i * 9 + j;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">44</td>
+    <td class="srcCell"><span class="srcLine">					cellList[cellNo].value = Integer.valueOf(value);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">45</td>
+    <td class="srcCell"><span class="srcLine">					pendingCellNoSet.remove(cellNo);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">46</td>
+    <td class="srcCell"><span class="srcLine">				}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">47</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">48</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">49</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">50</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">51</td>
+    <td class="srcCell"><span class="lineNoCov">	public Sudoku(Sudoku__c sudoku) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">52</td>
+    <td class="srcCell"><span class="lineNoCov">		this(sudoku.Problem__c);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">53</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">54</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">55</td>
+    <td class="srcCell"><span class="lineNoCov">	public SudokuStatus solve() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">56</td>
+    <td class="srcCell"><span class="srcLine">		System.debug(LoggingLevel.WARN, 'Initial State\n' + humanize());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">57</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">58</td>
+    <td class="srcCell"><span class="lineNoCov">		SudokuStatus status = solveRule();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">59</td>
+    <td class="srcCell"><span class="srcLine">		System.debug(LoggingLevel.WARN, 'State after Rule-based Solver\n' + humanize());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">60</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">61</td>
+    <td class="srcCell"><span class="lineNoCov">		if (status == SudokuStatus.WIP) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">62</td>
+    <td class="srcCell"><span class="lineNoCov">			status = solveBacktrack(0);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">63</td>
+    <td class="srcCell"><span class="srcLine">			System.debug(LoggingLevel.WARN, 'State after Backtrack Solver\n' + humanize());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">64</td>
+    <td class="srcCell"><span class="srcLine">		} else if (status == SudokuStatus.ERROR) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">65</td>
+    <td class="srcCell"><span class="lineNoCov">			throw new SudokuException('cannnot solve');</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">66</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">67</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">68</td>
+    <td class="srcCell"><span class="lineNoCov">		return status;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">69</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">70</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">71</td>
+    <td class="srcCell"><span class="lineNoCov">	public SudokuStatus solveRule() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">72</td>
+    <td class="srcCell"><span class="lineNoCov">		Boolean answerFound;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">73</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">74</td>
+    <td class="srcCell"><span class="lineNoCov">		while (pendingCellNoSet.size() &gt; 0) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">75</td>
+    <td class="srcCell"><span class="lineNoCov">			answerFound = false;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">76</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">77</td>
+    <td class="srcCell"><span class="lineNoCov">			for (Integer cellNo : pendingCellNoSet.clone()) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">78</td>
+    <td class="srcCell"><span class="lineNoCov">				Cell cell = cellList[cellNo];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">79</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">80</td>
+    <td class="srcCell"><span class="lineNoCov">				if (cell.value != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">81</td>
+    <td class="srcCell"><span class="lineNoCov">					answerFound = true;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">82</td>
+    <td class="srcCell"><span class="lineNoCov">					pendingCellNoSet.remove(cellNo);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">83</td>
+    <td class="srcCell"><span class="srcLine">				} else {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">84</td>
+    <td class="srcCell"><span class="lineNoCov">					if (cell.solve() != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">85</td>
+    <td class="srcCell"><span class="lineNoCov">						answerFound = true;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">86</td>
+    <td class="srcCell"><span class="lineNoCov">						pendingCellNoSet.remove(cellNo);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">87</td>
+    <td class="srcCell"><span class="srcLine">					}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">88</td>
+    <td class="srcCell"><span class="srcLine">				}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">89</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">90</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">91</td>
+    <td class="srcCell"><span class="lineNoCov">			if (!answerFound) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">92</td>
+    <td class="srcCell"><span class="lineNoCov">				return SudokuStatus.WIP;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">93</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">94</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">95</td>
+    <td class="srcCell"><span class="srcLine">			System.debug(LoggingLevel.WARN, 'State during Rule-based Solver\n' + humanize());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">96</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">97</td>
+    <td class="srcCell"><span class="lineNoCov">			if (Limits.getScriptStatements() &gt; SCRIPT_STATEMENTS_LIMIT) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">98</td>
+    <td class="srcCell"><span class="lineNoCov">				return SudokuStatus.NORESOURCE;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">99</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">100</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">101</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">102</td>
+    <td class="srcCell"><span class="lineNoCov">		return SudokuStatus.SUCCESS;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">103</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">104</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">105</td>
+    <td class="srcCell"><span class="lineNoCov">	public SudokuStatus solveBacktrack(Integer cellIdx) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">106</td>
+    <td class="srcCell"><span class="lineNoCov">		while (cellIdx &lt; 81 &amp;&amp; cellList[cellIdx].value != null) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">107</td>
+    <td class="srcCell"><span class="lineNoCov">			cellIdx ++;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">108</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">109</td>
+    <td class="srcCell"><span class="srcLine"></span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">110</td>
+    <td class="srcCell"><span class="lineNoCov">		if (cellIdx &gt;= 81) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">111</td>
+    <td class="srcCell"><span class="lineNoCov">			return SudokuStatus.SUCCESS;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">112</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">113</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">114</td>
+    <td class="srcCell"><span class="lineNoCov">		if (Limits.getScriptStatements() &gt; SCRIPT_STATEMENTS_LIMIT) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">115</td>
+    <td class="srcCell"><span class="lineNoCov">			return SudokuStatus.NORESOURCE;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">116</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">117</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">118</td>
+    <td class="srcCell"><span class="lineNoCov">		Cell currentCell = cellList[cellIdx];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">119</td>
+    <td class="srcCell"><span class="lineNoCov">		Candidates candidates = currentCell.getCandidates();</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">120</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">121</td>
+    <td class="srcCell"><span class="lineNoCov">		if (candidates == null || candidates.size == 0) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">122</td>
+    <td class="srcCell"><span class="lineNoCov">			return SudokuStatus.ERROR; // causes backtrack</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">123</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">124</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">125</td>
+    <td class="srcCell"><span class="lineNoCov">		for (Integer i = 1; i &lt;= 9; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">126</td>
+    <td class="srcCell"><span class="lineNoCov">			if (candidates.contains(i)) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">127</td>
+    <td class="srcCell"><span class="lineNoCov">				currentCell.value = i;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">128</td>
+    <td class="srcCell"><span class="lineNoCov">				SudokuStatus status = solveBacktrack(cellIdx + 1);</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">129</td>
+    <td class="srcCell"><span class="lineNoCov">				if (status == SudokuStatus.SUCCESS || status == SudokuStatus.NORESOURCE) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">130</td>
+    <td class="srcCell"><span class="lineNoCov">					return status;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">131</td>
+    <td class="srcCell"><span class="srcLine">				} else {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">132</td>
+    <td class="srcCell"><span class="lineNoCov">					currentCell.value = null;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">133</td>
+    <td class="srcCell"><span class="srcLine">				}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">134</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">135</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">136</td>
+    <td class="srcCell"><span class="srcLine">			</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">137</td>
+    <td class="srcCell"><span class="lineNoCov">		return SudokuStatus.ERROR;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">138</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">139</td>
+    <td class="srcCell"><span class="srcLine">	</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">140</td>
+    <td class="srcCell"><span class="lineNoCov">	public String humanize() {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">141</td>
+    <td class="srcCell"><span class="lineNoCov">		String status = '';</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">142</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">143</td>
+    <td class="srcCell"><span class="lineNoCov">		for (Integer i = 0; i &lt; 9; i ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">144</td>
+    <td class="srcCell"><span class="lineNoCov">			for (Integer j = 0; j &lt; 9; j ++) {</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">145</td>
+    <td class="srcCell"><span class="lineNoCov">				Cell cell = cellList[i * 9 + j];</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">146</td>
+    <td class="srcCell"><span class="lineNoCov">				status += (cell.value == null ? '_' : cell.value.format());</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">147</td>
+    <td class="srcCell"><span class="srcLine">			}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">148</td>
+    <td class="srcCell"><span class="lineNoCov">			status += '\n';</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">149</td>
+    <td class="srcCell"><span class="srcLine">		}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">150</td>
+    <td class="srcCell"><span class="srcLine">		</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">151</td>
+    <td class="srcCell"><span class="lineNoCov">		return status;</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">152</td>
+    <td class="srcCell"><span class="srcLine">	}</span></td>
+</tr>
+<tr>
+    <td align="right" class="lineCount">153</td>
+    <td class="srcCell"><span class="srcLine">}</span></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Apex Test Plus for Force.com Migration Tool</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+
+ <h1>Apex Test Plus for Force.com Migration Tool</h1>
+    <p>Apex Test Plus for Force.com Migration Tool is a custom Ant task to make testing Apex programs easier and faster that works with Force.com Migration Tool.
+       This will significantly improve the productivity of Apex development, especially when this is used with Force.com IDE (Eclipse), and help you implement TDD(Test Driven Development).</p>
+    <p>With Apex Test Plus, the following features, that are not provided by Force.com Migration Tool nor Force.com IDE, become possible:
+    	<ul>
+            <li>to save test results</li>
+            <li>to visualize code coverage</li>
+            <li>to view a specific part of debug log that is associated with each test method</li>
+    	</ul>
+    </p>
+	<p>See <a href="sample_result/index.html">a sample test result</a> that Apex Test Plus actually generated.</p>
+    <p>To know Force.com Migration Tool, see the <a href="http://www.salesforce.com/us/developer/docs/daas/index.htm">Force.com Migration Tool Guide</a>.</p>
+
+<h2>Installation</h2>
+
+<ol>
+ <li>Install Force.com Migration Tool (and Ant). Force.com Migration Tool versions that were confirmed to work with Apex Test Plus are 21.0 through 25.0.</li>
+ <li>Download <a href="http://commons.apache.org/lang/download_lang.cgi">Apache Commons Lang</a>, version 2.6 or newer, and extract <code>commons-lang-<em>version</em>.jar</code> in it. Or you can simply use <code>lib/commons-lang-2.6.jar</code> bundled with Apex Test Plus</li>
+ <li>Copy <code>commons-lang-<em>version</em>.jar</code> and <code>ant-apextestplus.jar</code> into your Ant installation <code>lib/</code> directory.</li>
+</ol>
+
+
+<h2>Creating build.xml</h2>
+
+<p>The easist way to create a proper build.xml would be to start with the sample build.xml and build.properties that come with Force.com Migration Tool.</p>
+
+<p>At first, open build.xml and add an attribute setting <code><em>xmlns:apextestplus="antlib:com.force.jp.ant.apextestplus"</em></code> to the "project" root element.</p>
+
+<pre><code>
+&lt;project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce" <b>xmlns:apextestplus="antlib:com.force.jp.ant.apextestplus"</b>&gt;
+</code></pre>
+
+<p>The name of Ant task to run tests is <b>runTest</b>.
+Some sample definitions, that will match typical cases, are shown below.
+</p>
+
+<h3>Retrieving the Latest Source Files from the Server</h3>
+<p>Using the following task definitions, Apex source code (classes and triggers) are always retrieved from the server just before tests are ran.
+This is the most secure way to correctly generate visual code coverage results because source code may be changed by anyone else on the server.
+</p>
+<pre><code>
+    &lt;property name="outDir" value="test_result"/&gt;
+    &lt;property name="srcDir" value="${outDir}/src"/&gt;
+
+    &lt;target name="runTest" depends="cleanOutDir,bulkRetrieveClasses,bulkRetrieveTriggers"&gt;
+      &lt;apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" &gt;
+        &lt;class&gt;TestClass1&lt;/class&gt;
+        &lt;class&gt;TestClass2&lt;/class&gt;
+        &lt;class&gt;TestClass3&lt;/class&gt;
+      &lt;/apextestplus:runTest&gt;
+    &lt;/target&gt;
+
+    &lt;target name="cleanOutDir"&gt;
+      &lt;delete dir="${outDir}" /&gt;
+    &lt;/target&gt;
+
+    &lt;target name="bulkRetrieveClasses"&gt;
+      &lt;mkdir dir="${srcDir}"/&gt;
+      &lt;sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexClass" retrieveTarget="${srcDir}"/&gt;
+    &lt;/target&gt;
+
+    &lt;target name="bulkRetrieveTriggers"&gt;
+      &lt;mkdir dir="${srcDir}"/&gt;
+      &lt;sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="ApexTrigger" retrieveTarget="${srcDir}"/&gt;
+    &lt;/target&gt;
+</code></pre>
+
+<h3>Using Local Source Files</h3>
+<p>Retrieving source code from the server is a little bit time-consuming task although it's reliable.
+If you have a dedicated salesforce.com environment (e.g. Developer Edition), it would be safe enough to use the source code that resides on your local PC to generate visual code coverage results.
+Note that this example assumes build.xml is located in the same diretory where your <code>src/</code> diretory of Force.com project exists.
+</p>
+<pre><code>
+    &lt;property name="outDir" value="test_result"/&gt;
+    &lt;property name="srcDir" value="src"/&gt;
+
+    &lt;target name="runTestLocal" depends="cleanOutDir"&gt;
+      &lt;apextestplus:runTest username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" srcDir="${srcDir}" outDir="${outDir}" runAllTests="false" logType="Debugonly" &gt;
+        &lt;class&gt;TestClass1&lt;/class&gt;
+        &lt;class&gt;TestClass2&lt;/class&gt;
+        &lt;class&gt;TestClass3&lt;/class&gt;
+      &lt;/apextestplus:runTest&gt;
+    &lt;/target&gt;
+
+    &lt;target name="cleanOutDir"&gt;
+      &lt;delete dir="${outDir}" /&gt;
+    &lt;/target&gt;
+</code></pre>
+
+
+<h2>Running Test</h2>
+<p>Just run the target that contains the runTest test you defined from Ant.
+Once build successfully completes, you will find the test result created in the directory specified by outDir attribute in the runTest task.
+Open index.html in it with web browser to see the test results.
+</p>
+
+
+<h2>RunTest Task References</h2>
+
+<p>The <b>runTest</b> task is used to run a set of Apex tests. Test classes and target classes/triggers must be deployed beforehand.</p>
+
+<dl>
+<dt><b>username</b></dt>
+
+<dd>Required attribute. The Salesforce username for login.</dd>
+
+<dt><b>password</b></dt>
+
+<dd>Required attribute. The Salesforce password for login. If you are using a security token, paste the 25-digit token value to the end of your password.</dd>
+
+<dt><b>serverurl</b></dt>
+
+<dd>Optional attribute. Defaults to 'https://login.salesforce.com'. This is useful for working against the sandbox instance on test.salesforce.com. </dd>
+
+<dt><b>srcDir</b></dt>
+
+<dd>Required attribute. The directory that contains <code>classes/</code> and <code>triggers/</code> diretories where source files of Apex classes and triggers are saved.
+Such source files are used as the base of visual code coverage results by colorization.
+</dd>
+
+<dt><b>outDir</b></dt>
+
+<dd>Required attribute. The directory where test result files are saved.</dd>
+
+<dt><b>coverageTarget</b></dt>
+
+<dd>Optional attribute. Defaults to 75. The percentage number of code coverage target. When the actual coverage doesn't reach the target, the number is red-colored in the test result.</dd>
+
+<dt><b>runAllTests</b></dt>
+
+<dd>Optional attribute (true/false). Defaults to true. If set to true, the task will run all Apex tests that are deployed.</dd>
+
+<dt><b>logType</b></dt>
+<dd>Optional attribute.  Defaults to 'None'. The debug logging level for tests. Valid options are 'None', 'Debugonly', 'Db', 'Profiling', 'Callout', and 'Detail'.</dd>
+
+<dt><b>class</b></dt>
+
+<dd>Optional child elements. A list of Apex test classes to be ran. When runAllTests="false", at least one element must be specified. Classes must be deployed beforehand. Each element can have an attribute named "test" (true/false, defaulted to true). Classes with <code>test="false"</code> are ignored and not tested.</dd>
+
+
+<h2>Working with Force.com IDE</h2>
+<p>To make Apex Test Plus work with Force.com IDE (Eclipse), you need to configure Ant-addon of Eclipse first.</p>
+
+<ol>
+ <li>Open "Preferences" window. (For Windows, [Window] &gt; [Prefernces] / For Mac, [Eclipse] &gt; [Preferences])</li>
+ <li>Open [Ant] &gt; [Runtime] from the left-sided tree and select "Classpath" tab.</li>
+ <li>Add the following three JAR files to Global Entries and click OK.
+  <ul>
+    <li>ant-salesforce.jar (Force.com Migration Tool)</li>
+    <li>ant-apextestplus.jar</li>
+    <li>commons-lang-<em>version</em>.jar</li>
+  </ul>
+ </li>
+</ol>
+
+<p>build.xml and build.properties should be put in the root diretory of the Force.com project you are working on.</p>
+
+<p>Now you can run the test as follows.</p>
+<ol>
+ <li>Right click the build.xml shown in Package Explorer.</li>
+ <li>Choose [Run As] &gt; [2 Ant Build...].</li>
+ <li>Check the target that contains your runTest task.</li>
+ <li>Press "Run" and the test starts.</li>
+</ol>
+
+<p>When you run the same test, you can do it just by clicking "Run External Tool" icon in the tool bar.</p>
+	
+</body>
+</html>

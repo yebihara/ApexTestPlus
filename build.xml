@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="dist" name="Force.com Test Plus">
+    <property name="target" value="1.6" />
+    <property name="source" value="1.6" />
+	
+    <property name="basedir" value="." />
+    <property name="bindir" value="bin" />
+    <property name="srcdir" value="src" />
+    <property name="docdir" value="doc" />
+    <property name="libdir" value="lib" />
+    <property name="distdir" value="dist" />
+    	
+    <property name="jarfile" value="${libdir}/ant-apextestplus.jar" />
+    <property name="distfile" value="${distdir}/apextestplus.zip" />
+	
+    <path id="classpath">
+        <pathelement location="${bindir}" />
+        <pathelement location="${libdir}/commons-lang-2.6.jar" />
+        <!-- pathelement location="${libdir}/ant.jar" / -->
+        <!-- pathelement location="${libdir}/ant-salesforce.jar" / -->
+    </path>
+	
+    <target name="clean">
+        <delete dir="${bindir}" />
+        <delete dir="${jarfile}" />
+        <delete dir="${distdir}" />
+    </target>
+	
+    <target name="build">
+        <mkdir dir="${bindir}" />
+        <copy includeemptydirs="false" todir="${bindir}">
+            <fileset dir="${srcdir}">
+                <exclude name="**/*.java" />
+            </fileset>
+        </copy>
+    	
+        <javac destdir="${bindir}" source="${source}" target="${target}" includeantruntime="true">
+            <src path="${srcdir}" />
+            <classpath refid="classpath" />
+        </javac>
+    	
+        <jar destfile="${jarfile}" basedir="${bindir}" />
+    </target>
+	
+    <target name="dist" depends="build">
+        <mkdir dir="${distdir}" />
+        <zip destfile="${distfile}" basedir="${basedir}" includes="${docdir}/**,${libdir}/**,${srcdir}/**" />
+    </target>
+</project>

@@ -1,0 +1,33 @@
+10:36:06.257|EXECUTION_STARTED
+10:36:06.257|CODE_UNIT_STARTED|[EXTERNAL]|01pA0000001nvWU|CellTest.testConstructor
+10:36:06.257|METHOD_ENTRY|[2]|01pA0000001nvWU|CellTest.CellTest()
+10:36:06.257|METHOD_EXIT|[2]|CellTest
+10:36:06.257|METHOD_ENTRY|[4]|System.assert(Boolean, ANY)
+10:36:06.257|EXCEPTION_THROWN|[4]|System.AssertException: Assertion Failed: test1
+10:36:06.258|METHOD_EXIT|[4]|System.assert(Boolean, ANY)
+10:36:06.258|FATAL_ERROR|System.AssertException: Assertion Failed: test1
+
+Class.CellTest.testConstructor: line 4, column 9
+External entry point
+10:36:06.280|CUMULATIVE_LIMIT_USAGE
+10:36:06.280|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Number of script statements: 1 out of 200000
+  Maximum heap size: 0 out of 3000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+10:36:06.280|CUMULATIVE_LIMIT_USAGE_END
+
+10:36:06.258|CODE_UNIT_FINISHED|CellTest.testConstructor
+10:36:06.258|EXECUTION_FINISHED
+
