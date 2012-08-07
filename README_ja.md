@@ -1,6 +1,6 @@
 Apex Test Plus for Force.com Migration Tool
 ===========================================
-\[[English version](README.md)\]
+\[[English version](/DeveloperForceJapan/ApexTestPlus/blob/master/README.md)\]
 
 はじめに
 --------
