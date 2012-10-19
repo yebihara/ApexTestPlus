@@ -71,7 +71,13 @@ public class TestResult {
         
         for (CodeCoverageResult coverage : result.getCodeCoverage()) {
             String namespace = coverage.getNamespace();
-            String className = namespace == null ? coverage.getName() : namespace + "__" + coverage.getName();
+            String className = null;
+            if (namespace == null || namespace.equals("")) {
+                className = coverage.getName();
+            } else {
+                className = namespace + "__" + coverage.getName();
+            }
+            
             Map<String, ClassCoverageResult> targetCoverageResults = null;
 
             // We need to identify the object type for which the CodeCoverageResult object is created
@@ -97,7 +103,12 @@ public class TestResult {
         
         for (CodeCoverageWarning warning : result.getCodeCoverageWarnings()) {
             String namespace = warning.getNamespace();
-            String className = namespace == null ? warning.getName() : namespace + "__" + warning.getName();
+            String className = null;
+            if (namespace == null || namespace.equals("")) {
+                className = warning.getName();
+            } else {
+                className = namespace + "__" + warning.getName();
+            }
             
             if (className == null) {
                 this.coverageWarning = warning.getMessage();
