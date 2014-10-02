@@ -19,7 +19,7 @@ Apex Test Plusは、Force.com Migration ToolやForce.com IDEが提供しない�
 インストール
 ------------
 
-1. Force.com Migration Tool(とAnt)をインストールします。現在のところ、Apex Test Plusとともに動作することが確認されているForce.com Migration Toolバージョンは、21.0から28.0です。
+1. Force.com Migration Tool(とAnt)をインストールします。現在のところ、Apex Test Plusとともに動作することが確認されているForce.com Migration Toolバージョンは、21.0から31.0です。
 1. [Apache Commons Lang](http://commons.apache.org/lang/download_lang.cgi)(バージョン2.6以上)をダウンロードします。または、Apex Test Plusにバンドルされる`commons-lang-2.6.jar`を使用することもできます。
 1. `commons-lang-`*version*`.jar`と`ant-apextestplus.jar`を、Antインストールディレクトリ以下の`lib/`ディレクトリ内にコピーします。
 
